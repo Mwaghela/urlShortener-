@@ -11,7 +11,7 @@
 
 	<!-- Enables the Spring MVC @Controller programming model -->
 	<annotation-driven />
-	
+
 
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving 
 		up static resources in the ${webappRoot}/resources directory -->
@@ -34,51 +34,35 @@
 
 
 	<!-- Hibernate 4 SessionFactory Bean definition -->
-	<!-- <beans:bean id="hibernate4AnnotatedSessionFactoryForMySQL"
-		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
-		<beans:property name="dataSource" ref="MySqlDataSource" />
-		<beans:property name="annotatedClasses">
-			<beans:list>
-				<beans:value>com.restApi.model</beans:value>
-			</beans:list>
-		</beans:property>
-		<beans:property name="hibernateProperties">
-			<beans:props>
-				<beans:prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect
-				</beans:prop>
-				<beans:prop key="hibernate.show_sql">false</beans:prop>
-				<beans:prop key="hibernate.hbm2ddl.auto">validate</beans:prop>
-				<beans:prop key="hibernate.temp.use_jdbc_metadata_defaults">false</beans:prop>
-				<beans:prop key="hibernate.current_session_context_class">thread</beans:prop>
-			</beans:props>
-		</beans:property>
-	</beans:bean> -->
-	
+	<!-- <beans:bean id="hibernate4AnnotatedSessionFactoryForMySQL" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean"> 
+		<beans:property name="dataSource" ref="MySqlDataSource" /> <beans:property 
+		name="annotatedClasses"> <beans:list> <beans:value>com.restApi.model</beans:value> 
+		</beans:list> </beans:property> <beans:property name="hibernateProperties"> 
+		<beans:props> <beans:prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect 
+		</beans:prop> <beans:prop key="hibernate.show_sql">false</beans:prop> <beans:prop 
+		key="hibernate.hbm2ddl.auto">validate</beans:prop> <beans:prop key="hibernate.temp.use_jdbc_metadata_defaults">false</beans:prop> 
+		<beans:prop key="hibernate.current_session_context_class">thread</beans:prop> 
+		</beans:props> </beans:property> </beans:bean> -->
+
 	<!-- DAO -->
-	<!-- <beans:bean id="restApiDAO"
-		class="com.restApi.restApiDAOImpl">
-		<beans:property name="sessionFactory"
-			ref="hibernate4AnnotatedSessionFactoryForMySQL" />
-	</beans:bean> -->
+	<!-- <beans:bean id="restApiDAO" class="com.restApi.restApiDAOImpl"> <beans:property 
+		name="sessionFactory" ref="hibernate4AnnotatedSessionFactoryForMySQL" /> 
+		</beans:bean> -->
 
 	<context:component-scan base-package="com.restApi.controller" />
-	
-	<!-- <beans:bean id="transactionManager"
-		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
-		<beans:property name="sessionFactory"
-			ref="hibernate4AnnotatedSessionFactoryForMySQL" />
-	</beans:bean> -->
-	
+
+	<!-- <beans:bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager"> 
+		<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactoryForMySQL" 
+		/> </beans:bean> -->
+
 	<!-- DAO -->
-	<beans:bean id="restApiDAO"
-		class="com.restApi.dao.RestApiDAOImpl">
+	<beans:bean id="restApiDAO" class="com.restApi.dao.RestApiDAOImpl">
 		<beans:property name="sessionFactory"
 			ref="hibernate4AnnotatedSessionFactoryForMySQL" />
 	</beans:bean>
-	
+
 	<!-- Services -->
-	<beans:bean id="restApiService"
-		class="com.restApi.service.RestApiServiceImpl">
+	<beans:bean id="restApiService" class="com.restApi.service.RestApiServiceImpl">
 		<beans:property name="restApiDAO" ref="restApiDAO">
 		</beans:property>
 	</beans:bean>
